@@ -27,6 +27,7 @@
 /ocaml/*.cmi
 /ocaml/*.cmo
 /ocaml/*.cmx
+/guile/*.go
 
 *.class
 *.hi

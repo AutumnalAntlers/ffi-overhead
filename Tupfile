@@ -55,7 +55,12 @@ NODE_CXX_FLAGS = $(CXXFLAGS) -fno-exceptions
 : d_ldc2/*.o | $(DEPS) |> ldc2 -betterC %f -of%o -L-Lnewplus -L-lnewplus -L-rpath=$(RPATH_NEWPLUS) -O -release |> d_ldc2_hello
 
 # guile
+<<<<<<< HEAD
 : guile/hello.scm |> guild compile -o %o %f |> guile/hello.go
+=======
+: guile/guile-hello.c |> $(CC) -shared -fPIC `guile-config compile` `guile-config link` %f ./newplus/plus.c -o %o |> guile/guile-hello.so
+: foreach guile/*.scm | guile/guile-hello.so |> guild compile -L ./guile -o %o %f |> guile/%B.go
+>>>>>>> 7f0be02 (guile: extension)
 
 # haskell
 : hello.hs | $(DEPS) |> /opt/ghc/bin/ghc -O2 -Lnewplus -lnewplus -optl-Wl,-rpath,$(RPATH_NEWPLUS) -o ghc_hello %f |> ghc_hello hello.hi hello.o

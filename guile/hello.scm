@@ -1,7 +1,8 @@
 (define-module (hello)
+  #:use-module (guile-hello)
   #:use-module (srfi srfi-19)
-  #:use-module (system foreign)
   #:export (main))
+<<<<<<< HEAD
 ;;
 ;; Using https://hyper.dev/blog/2018/gnu-guile-ffi/:
 ;;
@@ -35,6 +36,8 @@
 
 (define FFI (dynamic-link* "./newplus/libnewplus.so"))
 (define plusone (FFI int "plusone" int))
+=======
+>>>>>>> 7f0be02 (guile: extension)
 
 (define* (hello #:optional (count 2000000000))
 	 (let ((start (current-time)))
